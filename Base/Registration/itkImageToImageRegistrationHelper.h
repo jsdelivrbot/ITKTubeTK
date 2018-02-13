@@ -39,10 +39,10 @@ class ImageToImageRegistrationHelper : public Object
 
 public:
 
-  typedef ImageToImageRegistrationHelper Self;
-  typedef Object                         Superclass;
-  typedef SmartPointer<Self>             Pointer;
-  typedef SmartPointer<const Self>       ConstPointer;
+  using Self = ImageToImageRegistrationHelper;
+  using Superclass = Object;
+  using Pointer = SmartPointer<Self>;
+  using ConstPointer = SmartPointer<const Self>;
 
   itkTypeMacro( ImageToImageRegistrationHelper, Object );
 
@@ -51,39 +51,26 @@ public:
   //
   // Custom Typedefs
   //
-  typedef TImage ImageType;
+  using ImageType = TImage;
 
-  typedef typename TImage::PixelType PixelType;
+  using PixelType = typename TImage::PixelType;
 
-  itkStaticConstMacro( ImageDimension, unsigned int,
-                       TImage::ImageDimension );
+  static constexpr unsigned int ImageDimension = TImage::ImageDimension;
 
   //
   // Available Registration Methods
   //
-  typedef ImageToImageRegistrationMethod<TImage>
-  RegistrationMethodType;
+  using RegistrationMethodType = ImageToImageRegistrationMethod<TImage>;
 
-  typedef InitialImageToImageRegistrationMethod<TImage>
-  InitialRegistrationMethodType;
+  using InitialRegistrationMethodType = InitialImageToImageRegistrationMethod<TImage>;
 
-  typedef OptimizedImageToImageRegistrationMethod<TImage>
-  OptimizedRegistrationMethodType;
+  using OptimizedRegistrationMethodType = OptimizedImageToImageRegistrationMethod<TImage>;
 
-  typedef RigidImageToImageRegistrationMethod<TImage>
-  RigidRegistrationMethodType;
+  using RigidRegistrationMethodType = RigidImageToImageRegistrationMethod<TImage>;
 
-  typedef AffineImageToImageRegistrationMethod<TImage>
-  AffineRegistrationMethodType;
+  using AffineRegistrationMethodType = AffineImageToImageRegistrationMethod<TImage>;
 
-  typedef ScaleSkewAngle2DImageToImageRegistrationMethod<TImage>
-  Affine2DRegistrationMethodType;
-
-  typedef ScaleSkewVersor3DImageToImageRegistrationMethod<TImage>
-  Affine3DRegistrationMethodType;
-
-  typedef BSplineImageToImageRegistrationMethod<TImage>
-  BSplineRegistrationMethodType;
+  using BSplineRegistrationMethodType = BSplineImageToImageRegistrationMethod<TImage>;
 
   //
   // Typedefs for the parameters of the registration methods
@@ -114,9 +101,9 @@ public:
   typedef typename InitialRegistrationMethodType::TransformType
   InitialTransformType;
 
-  typedef std::vector<std::vector<float>  > LandmarkVectorType;
+  using LandmarkVectorType = std::vector<std::vector<float>  >;
 
-  typedef typename TImage::PointType PointType;
+  using PointType = typename TImage::PointType;
 
   typedef typename RigidRegistrationMethodType::TransformType
   RigidTransformType;
@@ -124,13 +111,7 @@ public:
   typedef typename AffineRegistrationMethodType::TransformType
   AffineTransformType;
 
-  typedef typename Affine2DRegistrationMethodType::TransformType
-  Affine2DTransformType;
-
-  typedef typename Affine3DRegistrationMethodType::TransformType
-  Affine3DTransformType;
-
-  typedef AffineTransformType MatrixTransformType;
+  using MatrixTransformType = AffineTransformType;
 
   typedef typename BSplineRegistrationMethodType::TransformType
   BSplineTransformType;
@@ -465,7 +446,7 @@ protected:
 private:
 
   template< int tmpImageDimension >
-  void AffineRegND() 
+  void AffineRegND()
    { typename Image< double, tmpImageDimension >::Pointer t; AffineRegND( t ); }
 
   void AffineRegND( Image< double, 2 > * t );
