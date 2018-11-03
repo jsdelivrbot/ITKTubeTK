@@ -167,7 +167,7 @@ ComputeRidgeness( const vnl_matrix<T> & H,
     double closestVDProd = 0;
     for( unsigned int i=0; i<ImageDimension; i++ )
       {
-      double dProd = vnl_math_abs( dot_product( prevTangent,
+      double dProd = vnl_math::abs( dot_product( prevTangent,
         HEVect.get_column( i ) ) );
       if( dProd > closestVDProd )
         {
@@ -228,7 +228,7 @@ ComputeRidgeness( const vnl_matrix<T> & H,
     if( ImageDimension > 2 )
       {
       roundness =
-        1 - vnl_math_abs( 1 - ( ( HEVal[ ImageDimension-2 ] *
+        1 - vnl_math::abs( 1 - ( ( HEVal[ ImageDimension-2 ] *
           HEVal[ ImageDimension-2] ) / avgv ) );
       }
     else
@@ -409,14 +409,14 @@ ComputeTqli ( vnl_vector<T> &diag, vnl_vector<T> &subD, vnl_matrix<T> &mat )
         {
         if( m!=( n-1 ) )
           {
-          dd = vnl_math_abs( diag( m ) )+vnl_math_abs( diag( m+1 ) );
+          dd = vnl_math::abs( diag( m ) )+vnl_math_abs( diag( m+1 ) );
           }
         else
           {
-          dd = vnl_math_abs( diag( m ) );
+          dd = vnl_math::abs( diag( m ) );
           }
 
-        if( vnl_math_abs( subD( m ) )+dd == dd )
+        if( vnl_math::abs( subD( m ) )+dd == dd )
           {
           break;
           }
@@ -442,7 +442,7 @@ ComputeTqli ( vnl_vector<T> &diag, vnl_vector<T> &subD, vnl_matrix<T> &mat )
         {
         f = s*subD( i );
         b = c*subD( i );
-        if( vnl_math_abs( f )>=vnl_math_abs( g ) )
+        if( vnl_math::abs( f )>=vnl_math_abs( g ) )
           {
           c = g/f;
           r = vcl_sqrt( c*c+1 );
@@ -570,9 +570,9 @@ ComputeEigen( vnl_matrix<T> const & mat,
       {
       for( unsigned int j=i+1; j<n; j++ )
         {
-        if( ( vnl_math_abs( eVals( j ) )>vnl_math_abs( eVals( i ) )
+        if( ( vnl_math::abs( eVals( j ) )>vnl_math_abs( eVals( i ) )
             && !minToMax )
-          || ( vnl_math_abs( eVals( j ) )<vnl_math_abs( eVals( i ) )
+          || ( vnl_math::abs( eVals( j ) )<vnl_math_abs( eVals( i ) )
             && minToMax ) )
           {
           T tf = eVals( j );

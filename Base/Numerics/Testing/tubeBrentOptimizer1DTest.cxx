@@ -134,14 +134,14 @@ int tubeBrentOptimizer1DTest( int tubeNotUsed( argc ), char * tubeNotUsed( argv 
     }
 
   double idealX = - vnl_math::pi / 2;
-  if( vnl_math_abs( idealX - x ) > epsilon )
+  if( vnl_math::abs( idealX - x ) > epsilon )
     {
     std::cout << "Optimization not within tolerance!  x=" << x
-      << " diff=" << vnl_math_abs( idealX - x ) << std::endl;
+      << " diff=" << vnl_math::abs( idealX - x ) << std::endl;
     returnStatus = EXIT_FAILURE;
     }
 
-  if( vnl_math_abs( -1 - xVal ) > epsilon )
+  if( vnl_math::abs( -1 - xVal ) > epsilon )
     {
     std::cout << "Optimization not within tolerance!  xVal=" << xVal
       << std::endl;

@@ -175,26 +175,26 @@ AnisotropicCoherenceEnhancingDiffusionImageFilter<TInputImage, TOutputImage>
     /* Assumption is that eigenvalue1 > eigenvalue2 > eigenvalue3 */
 
     // Find the smallest eigenvalue
-    double smallest = vnl_math_abs( eigenValue[0] );
+    double smallest = vnl_math::abs( eigenValue[0] );
     unsigned int smallestEigenValueIndex=0;
     for( unsigned int i=1; i <=2; i++ )
       {
-      if( vnl_math_abs( eigenValue[i] ) < smallest )
+      if( vnl_math::abs( eigenValue[i] ) < smallest )
         {
         Lambda1 = eigenValue[i];
-        smallest = vnl_math_abs( eigenValue[i] );
+        smallest = vnl_math::abs( eigenValue[i] );
         smallestEigenValueIndex = i;
         }
       }
 
     // Find the largest eigenvalue
-    double largest = vnl_math_abs( eigenValue[0] );
+    double largest = vnl_math::abs( eigenValue[0] );
     unsigned int largestEigenValueIndex=0;
     for( unsigned int i=1; i <=2; i++ )
       {
-      if( vnl_math_abs( eigenValue[i] > largest ) )
+      if( vnl_math::abs( eigenValue[i] > largest ) )
         {
-        largest = vnl_math_abs( eigenValue[i] );
+        largest = vnl_math::abs( eigenValue[i] );
         largestEigenValueIndex = i;
         }
       }
@@ -216,9 +216,9 @@ AnisotropicCoherenceEnhancingDiffusionImageFilter<TInputImage, TOutputImage>
 
     /* largest > middle > smallest */
 
-    if( ( vnl_math_abs( eigenValue[middleEigenValueIndex] ) <
+    if( ( vnl_math::abs( eigenValue[middleEigenValueIndex] ) <
         zeroValueTolerance )  ||
-       ( vnl_math_abs( eigenValue[smallestEigenValueIndex] ) <
+       ( vnl_math::abs( eigenValue[smallestEigenValueIndex] ) <
          zeroValueTolerance ) )
       {
       Lambda3 = 1.0;

@@ -47,7 +47,7 @@ int Test( void )
     if( VDimension == 3 )
       {
       v2 = tube::ComputeOrthogonalVector( v1 );
-      if( vnl_math_abs( dot_product( v1, v2 ) ) > epsilon )
+      if( vnl_math::abs( dot_product( v1, v2 ) ) > epsilon )
         {
         std::cout << count << " : ";
         std::cout << "FAILURE: ComputeOrthogonalVector: DotProduct = "
@@ -57,8 +57,8 @@ int Test( void )
         }
 
       vnl_vector<float> v3 = tube::ComputeCrossVector( v1, v2 );
-      if( vnl_math_abs( dot_product( v1, v3 ) ) > epsilon ||
-          vnl_math_abs( dot_product( v2, v3 ) ) > epsilon )
+      if( vnl_math::abs( dot_product( v1, v3 ) ) > epsilon ||
+          vnl_math::abs( dot_product( v2, v3 ) ) > epsilon )
         {
         std::cout << count << " : ";
         std::cout << "FAILURE: ComputeCrossVector: DotProduct = "
@@ -77,7 +77,7 @@ int Test( void )
 
     v2 = v2.normalize();
     vnl_vector<float> v4 = tube::ComputeLineStep( v1, 0.5, v2 );
-    if( vnl_math_abs( tube::ComputeEuclideanDistanceVector( v1, v4 ) - 0.5 )
+    if( vnl_math::abs( tube::ComputeEuclideanDistanceVector( v1, v4 ) - 0.5 )
         > epsilon )
       {
       std::cout << count << " : ";
@@ -104,7 +104,7 @@ int Test( void )
     for( unsigned int d=0; d<VDimension; d++ )
       {
       v1 = m1 * eVects.get_column( d );
-      if( vnl_math_abs( v1.magnitude() - vnl_math_abs( eVals[d] ) ) > epsilon )
+      if( vnl_math::abs( v1.magnitude() - vnl_math::abs( eVals[d] ) ) > epsilon )
         {
         std::cout << count << " : ";
         std::cout << "FAILURE: ComputeEigen : "

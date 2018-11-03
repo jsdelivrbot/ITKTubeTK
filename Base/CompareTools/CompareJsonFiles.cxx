@@ -256,7 +256,7 @@ int compareJSON( const Json::Value & test,
         }
       else if( ( *baselineIt ).isDouble() )
         {
-        if( vnl_math_abs( ( *baselineIt ).asDouble() - ( *testIt ).asDouble() )
+        if( vnl_math::abs( ( *baselineIt ).asDouble() - ( *testIt ).asDouble() )
               > toleranceValue )
           {
           if( reportErrors )

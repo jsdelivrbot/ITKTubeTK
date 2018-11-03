@@ -107,7 +107,7 @@ public:
     tangent.Normalize();
     const double dotProduct = beam * tangent;
     double cos_term =
-      vnl_math_abs( std::sqrt( 1.0 - dotProduct * dotProduct ) );
+      vnl_math::abs( std::sqrt( 1.0 - dotProduct * dotProduct ) );
     if( m_AngleDependence != 1.0 )
       {
       cos_term = std::pow( cos_term, m_AngleDependence );

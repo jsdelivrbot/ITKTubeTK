@@ -221,14 +221,14 @@ int itktubeSheetnessMeasureImageFilterTest2( int argc, char * argv[] )
     eigenValue = eigenValueImageIterator.Get();
 
     // Find the largest eigenvalue
-    double largest = vnl_math_abs( eigenValue[0] );
+    double largest = vnl_math::abs( eigenValue[0] );
     unsigned int largestEigenValueIndex=0;
 
     for( unsigned int i=1; i <=2; i++ )
       {
-      if(  vnl_math_abs( eigenValue[i] > largest ) )
+      if(  vnl_math::abs( eigenValue[i] > largest ) )
         {
-        largest = vnl_math_abs( eigenValue[i] );
+        largest = vnl_math::abs( eigenValue[i] );
         largestEigenValueIndex = i;
         }
       }
@@ -245,7 +245,7 @@ int itktubeSheetnessMeasureImageFilterTest2( int argc, char * argv[] )
 
     SheetnessImageType::PixelType sheetnessValue;
     sheetnessValue = sheetnessValueImageIterator.Get();
-    if( ( vnl_math_abs( largest ) >  toleranceEigenValues )  &&
+    if( ( vnl_math::abs( largest ) >  toleranceEigenValues )  &&
         ( sheetnessValue >  sheetnessThresholdValue ) )
       {
       //Assuming eigenvectors are rows

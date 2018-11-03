@@ -154,7 +154,7 @@ int tubeBrentOptimizerNDTest( int tubeNotUsed( argc ), char * tubeNotUsed( argv 
     returnStatus = EXIT_FAILURE;
     }
 
-  if( vnl_math_abs( -2 - xVal ) > epsilon )
+  if( vnl_math::abs( -2 - xVal ) > epsilon )
     {
     std::cout << "Optimization not within tolerance!  xVal=" << xVal
       << std::endl;

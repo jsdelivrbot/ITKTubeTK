@@ -160,7 +160,7 @@ MeanSquareRegistrationFunction<TFixedImage, TMovingImage, TDeformationField>
     denominator=1.0;
     }
   PixelType update;
-  if( vnl_math_abs( speedValue ) < m_IntensityDifferenceThreshold ||
+  if( vnl_math::abs( speedValue ) < m_IntensityDifferenceThreshold ||
     denominator < m_DenominatorThreshold )
     {
     update.Fill( 0.0 );

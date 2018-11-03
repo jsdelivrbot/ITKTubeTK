@@ -414,14 +414,14 @@ RadiusExtractor2<TInputImage>
     double factor = ( m_RadiusMin - r ) / m_RadiusTolerance;
     double m0 = this->GetKernelMedialness( m_RadiusMin );
     double m1 = this->GetKernelMedialness( m_RadiusMin + m_RadiusTolerance );
-    return m0 - factor * vnl_math_abs( m0 - m1 );
+    return m0 - factor * vnl_math::abs( m0 - m1 );
     }
   else if( r > m_RadiusMax )
     {
     double factor = ( r - m_RadiusMax ) / m_RadiusTolerance;
     double m0 = this->GetKernelMedialness( m_RadiusMax );
     double m1 = this->GetKernelMedialness( m_RadiusMax - m_RadiusTolerance );
-    return m0 - factor * vnl_math_abs( m0 - m1 );
+    return m0 - factor * vnl_math::abs( m0 - m1 );
     }
 
   double pVal = 0;
@@ -542,7 +542,7 @@ RadiusExtractor2<TInputImage>
     double m0 = this->GetKernelBranchness( m_RadiusMin );
     double m1 = this->GetKernelBranchness( m_RadiusMin
       + m_RadiusTolerance );
-    return m0 - factor * vnl_math_abs( m0 - m1 );
+    return m0 - factor * vnl_math::abs( m0 - m1 );
     }
   else if( r > m_RadiusMax )
     {
@@ -550,7 +550,7 @@ RadiusExtractor2<TInputImage>
     double m0 = this->GetKernelBranchness( m_RadiusMax );
     double m1 = this->GetKernelBranchness( m_RadiusMax
       - m_RadiusTolerance );
-    return m0 - factor * vnl_math_abs( m0 - m1 );
+    return m0 - factor * vnl_math::abs( m0 - m1 );
     }
   double pVal = 0;
   double nVal = 0;
@@ -631,7 +631,7 @@ RadiusExtractor2<TInputImage>
     nVal = ( bin - 0.5 ) / histoBins;
     }
 
-  double branchness = 1.0 - vnl_math_abs( pVal - nVal );
+  double branchness = 1.0 - vnl_math::abs( pVal - nVal );
 
   return branchness;
 }

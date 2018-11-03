@@ -248,7 +248,7 @@ int tubeSplineApproximation1DTest( int argc, char * argv[] )
     else
       {
       bool err=false;
-      if( vnl_math_abs( x - -1.4749 ) > 0.0001 )
+      if( vnl_math::abs( x - -1.4749 ) > 0.0001 )
         {
         std::cout << "Spline.Extreme() solution not ideal: x="
           << x << " != ideal=-1.4749" << std::endl;
@@ -269,7 +269,7 @@ int tubeSplineApproximation1DTest( int argc, char * argv[] )
         returnStatus = EXIT_FAILURE;
         err = true;
         }
-      if( vnl_math_abs( xVal - -0.827393 ) > 0.0001 )
+      if( vnl_math::abs( xVal - -0.827393 ) > 0.0001 )
         {
         std::cout << "Spline.Extreme() output not ideal: val="
           << xVal << " != ideal=1.0" << std::endl;
