@@ -338,7 +338,7 @@ ComputeTriDiag3D( vnl_matrix<T> &mat,
   subD( 2 ) = 0;
   if( c != 0 )
     {
-    const double s = vcl_sqrt( b*b+c*c );
+    const double s = std::sqrt( b*b+c*c );
     b /= s;
     c /= s;
     const double q = 2*b*e+c*( f-d );
@@ -426,7 +426,7 @@ ComputeTqli ( vnl_vector<T> &diag, vnl_vector<T> &subD, vnl_matrix<T> &mat )
         break;
         }
       g = ( diag( l+1 )-diag( l ) )/( 2*subD( l ) );
-      r = vcl_sqrt( g*g+1 );
+      r = std::sqrt( g*g+1 );
       if( g<0 )
         {
         g = diag( m )-diag( l )+subD( l )/( g-r );
@@ -445,14 +445,14 @@ ComputeTqli ( vnl_vector<T> &diag, vnl_vector<T> &subD, vnl_matrix<T> &mat )
         if( vnl_math::abs( f )>=vnl_math_abs( g ) )
           {
           c = g/f;
-          r = vcl_sqrt( c*c+1 );
+          r = std::sqrt( c*c+1 );
           subD( i+1 ) = static_cast< T >( f*r );
           c *= ( s = 1/r );
           }
         else
           {
           s = f/g;
-          r = vcl_sqrt( s*s+1 );
+          r = std::sqrt( s*s+1 );
           subD( i+1 ) = static_cast< T >( g*r );
           s *= ( c = 1/r );
           }
